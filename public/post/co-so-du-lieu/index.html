@@ -1,0 +1,674 @@
+<!doctype html>
+<html
+  dir="ltr"
+  lang="en"
+  data-theme=""
+  
+    class="html theme--light"
+  
+><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <title>
+    
+      
+        Làm việc với Cơ sở dữ liệu trong Spring Boot |
+      Trương Minh Đức
+
+  </title>
+
+  <meta name="generator" content="Hugo 0.140.1"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="author" content="Trương Minh Đức" />
+  <meta
+    name="description"
+    content="Call me Duc BA"
+  />
+  
+  
+    
+    
+    <link
+      rel="stylesheet"
+      href="/scss/main.min.8d4fad7e6916ad2e291e8d97ada157c70350d6d7150fea137e7243340967befb.css"
+      integrity="sha256-jU&#43;tfmkWrS4pHo2XraFXxwNQ1tcVD&#43;oTfnJDNAlnvvs="
+      crossorigin="anonymous"
+      type="text/css"
+    />
+  
+
+  
+  <link
+    rel="stylesheet"
+    href="/css/markupHighlight.min.73ccfdf28df555e11009c13c20ced067af3cb021504cba43644c705930428b00.css"
+    integrity="sha256-c8z98o31VeEQCcE8IM7QZ688sCFQTLpDZExwWTBCiwA="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/fontawesome.min.10cb17328b3207590ce3d89fb482e7cd6937d8138cef2059c69cabd65ab7d6c6.css"
+    integrity="sha256-EMsXMosyB1kM49iftILnzWk32BOM7yBZxpyr1lq31sY="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/solid.min.7aa4d559d5fadcfed666b5679be54d0dbbcf6a0542742319765b253d2797cc44.css"
+    integrity="sha256-eqTVWdX63P7WZrVnm&#43;VNDbvPagVCdCMZdlslPSeXzEQ="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/regular.min.a699c3ab02229020e2d51dfe6c9a4cc556fd7781edbc166e2af9d0db9d5c66ce.css"
+    integrity="sha256-ppnDqwIikCDi1R3&#43;bJpMxVb9d4HtvBZuKvnQ251cZs4="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/brands.min.1d88b60c86c4bb253fa4d4c085d27f7ee1f6eca544f7b50b227a2e63fbcfbaaa.css"
+    integrity="sha256-HYi2DIbEuyU/pNTAhdJ/fuH27KVE97ULInouY/vPuqo="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+
+  <link rel="canonical" href="http://localhost:1313/post/co-so-du-lieu/" />
+
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/anatole-header.min.f9132794301a01ff16550ed66763482bd848f62243d278f5e550229a158bfd32.js"
+    integrity="sha256-&#43;RMnlDAaAf8WVQ7WZ2NIK9hI9iJD0nj15VAimhWL/TI="
+    crossorigin="anonymous"
+  ></script>
+
+  
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/anatole-theme-switcher.min.d6d329d93844b162e8bed1e915619625ca91687952177552b9b3e211014a2957.js"
+      integrity="sha256-1tMp2ThEsWLovtHpFWGWJcqRaHlSF3VSubPiEQFKKVc="
+      crossorigin="anonymous"
+    ></script>
+  
+
+  
+
+  
+
+
+  
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/images/site-feature-image.png">
+  <meta name="twitter:title" content="Làm việc với Cơ sở dữ liệu trong Spring Boot">
+  <meta name="twitter:description" content="Giới thiệu về làm việc với cơ sở dữ liệu trong Spring Boot Spring Boot là một framework mạnh mẽ giúp xây dựng các ứng dụng Java một cách nhanh chóng và dễ dàng. Trong bài viết này, chúng ta sẽ tìm hiểu cách làm việc với cơ sở dữ liệu trong Spring Boot, từ việc kết nối cơ sở dữ liệu đến việc thực hiện các thao tác CRUD (Tạo, Đọc, Cập nhật, Xóa) với cơ sở dữ liệu.">
+
+
+
+  
+  <meta property="og:url" content="http://localhost:1313/post/co-so-du-lieu/">
+  <meta property="og:site_name" content="My blog">
+  <meta property="og:title" content="Làm việc với Cơ sở dữ liệu trong Spring Boot">
+  <meta property="og:description" content="Giới thiệu về làm việc với cơ sở dữ liệu trong Spring Boot Spring Boot là một framework mạnh mẽ giúp xây dựng các ứng dụng Java một cách nhanh chóng và dễ dàng. Trong bài viết này, chúng ta sẽ tìm hiểu cách làm việc với cơ sở dữ liệu trong Spring Boot, từ việc kết nối cơ sở dữ liệu đến việc thực hiện các thao tác CRUD (Tạo, Đọc, Cập nhật, Xóa) với cơ sở dữ liệu.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2024-12-30T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-12-30T00:00:00+00:00">
+    <meta property="article:tag" content="Spring Boot">
+    <meta property="article:tag" content="Database">
+    <meta property="og:image" content="http://localhost:1313/images/site-feature-image.png">
+
+
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "articleSection": "post",
+        "name": "Làm việc với Cơ sở dữ liệu trong Spring Boot",
+        "headline": "Làm việc với Cơ sở dữ liệu trong Spring Boot",
+        "alternativeHeadline": "",
+        "description": "
+      
+        \u003ch3 id=\u0022giới-thiệu-về-làm-việc-với-cơ-sở-dữ-liệu-trong-spring-boot\u0022\u003eGiới thiệu về làm việc với cơ sở dữ liệu trong Spring Boot\u003c\/h3\u003e\n\u003cp\u003eSpring Boot là một framework mạnh mẽ giúp xây dựng các ứng dụng Java một cách nhanh chóng và dễ dàng. Trong bài viết này, chúng ta sẽ tìm hiểu cách làm việc với cơ sở dữ liệu trong Spring Boot, từ việc kết nối cơ sở dữ liệu đến việc thực hiện các thao tác CRUD (Tạo, Đọc, Cập nhật, Xóa) với cơ sở dữ liệu.\u003c\/p\u003e
+
+
+      
+
+
+    ",
+        "inLanguage": "en",
+        "isFamilyFriendly": "true",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/post\/co-so-du-lieu\/"
+        },
+        "author" : {
+            "@type": "Person",
+            "name": "Trương Minh Đức"
+        },
+        "creator" : {
+            "@type": "Person",
+            "name": "Trương Minh Đức"
+        },
+        "accountablePerson" : {
+            "@type": "Person",
+            "name": "Trương Minh Đức"
+        },
+        "copyrightHolder" : {
+            "@type": "Person",
+            "name": "Trương Minh Đức"
+        },
+        "copyrightYear" : "2024",
+        "dateCreated": "2024-12-30T00:00:00.00Z",
+        "datePublished": "2024-12-30T00:00:00.00Z",
+        "dateModified": "2024-12-30T00:00:00.00Z",
+        "publisher":{
+            "@type":"Organization",
+            "name": "Trương Minh Đức",
+            "url": "http://localhost:1313/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "http:\/\/localhost:1313\/favicon\/favicon-32x32.png",
+                "width":"32",
+                "height":"32"
+            }
+        },
+        "image": 
+      [
+        
+        "http://localhost:1313/images/site-feature-image.png"
+
+
+      
+      ]
+
+    ,
+        "url" : "http:\/\/localhost:1313\/post\/co-so-du-lieu\/",
+        "wordCount" : "702",
+        "genre" : [ ],
+        "keywords" : [ 
+      
+      "Spring Boot"
+
+    
+      
+        ,
+
+      
+      "Database"
+
+    ]
+    }
+  </script>
+
+
+</head>
+<body class="body">
+    <div class="wrapper">
+      <aside
+        
+          class="wrapper__sidebar"
+        
+      ><div
+  class="sidebar
+    animated fadeInDown
+  "
+>
+  <div class="sidebar__content">
+    <div class="sidebar__introduction">
+      <img
+        class="sidebar__introduction-profileimage"
+        src="/images/profiles.jpg"
+        alt="profile picture"
+      />
+      
+        <div class="sidebar__introduction-title">
+          <a href="/">TRƯƠNG MINH ĐỨC</a>
+        </div>
+      
+      <div class="sidebar__introduction-description">
+        <p>Call me Duc BA</p>
+      </div>
+    </div>
+    <ul class="sidebar__list">
+      
+        <li class="sidebar__list-item">
+          <a
+            href="https://www.facebook.com/profile.php?id=100012768063762"
+            target="_blank"
+            rel="noopener me"
+            aria-label="Facebook"
+            title="Facebook"
+          >
+            <i class="fa-brands fa-facebook fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a
+            href="https://github.com/minhduc-2610"
+            target="_blank"
+            rel="noopener me"
+            aria-label="GitHub"
+            title="GitHub"
+          >
+            <i class="fa-brands fa-github fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a
+            href="https://www.instagram.com/mduck_2028/"
+            target="_blank"
+            rel="noopener me"
+            aria-label="instagram"
+            title="instagram"
+          >
+            <i class="fa-brands fa-instagram fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a
+            href="mailto:truongminhduc203@gmail.com"
+            target="_blank"
+            rel="noopener me"
+            aria-label="e-mail"
+            title="e-mail"
+          >
+            <i class="fa-solid fa-envelope fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div><footer class="footer footer__sidebar">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        Trương Minh Đức
+        2024
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.1248fa75275e5ef0cbef27e8c1e27dc507c445ae3a2c7d2ed0be0809555dac64.js"
+    integrity="sha256-Ekj6dSdeXvDL7yfoweJ9xQfERa46LH0u0L4ICVVdrGQ="
+    crossorigin="anonymous"
+  ></script></div>
+</aside>
+      <main
+        
+          class="wrapper__main"
+        
+      >
+        <header class="header"><div
+  class="
+    animated fadeInDown
+  "
+>
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+  </a>
+  <nav class="nav">
+    <ul class="nav__list" id="navMenu">
+      
+      
+        
+        
+          <li class="nav__list-item">
+            
+            <a
+              
+              href="/"
+              
+              title=""
+              >Trang Chủ</a
+            >
+          </li>
+        
+
+      
+        
+        
+          <li class="nav__list-item">
+            
+            <a
+              
+              href="/post/"
+              
+              title=""
+              >Bài Viết</a
+            >
+          </li>
+        
+
+      
+        
+        
+          <li class="nav__list-item">
+            
+            <a
+              
+              href="/portfolio/"
+              
+              title=""
+              >Dự Án</a
+            >
+          </li>
+        
+
+      
+        
+        
+          <li class="nav__list-item">
+            
+            <a
+              
+              href="/about/"
+              
+              title=""
+              >Giới Thiệu</a
+            >
+          </li>
+        
+
+      
+        
+        
+
+          <li class="nav__list-item">
+            <div class="optionswitch">
+              <input class="optionswitch__picker" type="checkbox" id="4" hidden />
+
+              
+              
+                
+
+              
+                
+
+              
+
+
+              <label class="optionswitch__label" for="4"
+                >Thành Tựu <i class="fa fa-angle-down" aria-hidden="true"></i
+              ></label>
+
+              <div class="optionswitch__triangle"></div>
+              <ul class="optionswitch__list">
+                
+                  <li class="optionswitch__list-item">
+                    
+                    <a
+                      href="/awards/"
+                      
+                      title=""
+                      >Giải Thưởng</a
+                    >
+                  </li>
+                
+                  <li class="optionswitch__list-item">
+                    
+                    <a
+                      href="/certifications/"
+                      
+                      title=""
+                      >Chứng Chỉ</a
+                    >
+                  </li>
+                
+              </ul>
+            </div>
+          </li>
+        
+
+      
+        
+        
+          <li class="nav__list-item">
+            
+            <a
+              
+              href="/contact/"
+              
+              title=""
+              >Liên Hệ</a
+            >
+          </li>
+        
+
+      
+    </ul>
+    <ul class="nav__list nav__list--end">
+      
+      
+        <li class="nav__list-item">
+          <div class="themeswitch">
+            <a title="Switch Theme">
+              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+          </div>
+        </li>
+      
+    </ul>
+  </nav>
+</div>
+</header>
+  <div
+    class="post 
+      animated fadeInDown
+    "
+  >
+    
+    <div class="post__content">
+      
+        <h1>Làm Việc Với Cơ Sở Dữ Liệu Trong Spring Boot</h1>
+      
+      
+        <ul class="post__meta">
+          <li class="post__meta-item">
+            <em class="fas fa-calendar-day post__meta-icon"></em>
+            <span class="post__meta-text"
+              >
+                
+                  30/12/2024
+                
+
+              
+            </span>
+          </li>
+          <li class="post__meta-item">
+            <em class="fas fa-stopwatch post__meta-icon"></em>
+            <span class="post__meta-text">4-minute read</span>
+          </li>
+        </ul>
+      <h3 id="giới-thiệu-về-làm-việc-với-cơ-sở-dữ-liệu-trong-spring-boot">Giới thiệu về làm việc với cơ sở dữ liệu trong Spring Boot</h3>
+<p>Spring Boot là một framework mạnh mẽ giúp xây dựng các ứng dụng Java một cách nhanh chóng và dễ dàng. Trong bài viết này, chúng ta sẽ tìm hiểu cách làm việc với cơ sở dữ liệu trong Spring Boot, từ việc kết nối cơ sở dữ liệu đến việc thực hiện các thao tác CRUD (Tạo, Đọc, Cập nhật, Xóa) với cơ sở dữ liệu.</p>
+<h3 id="1-cấu-hình-kết-nối-cơ-sở-dữ-liệu-trong-spring-boot">1. Cấu hình kết nối cơ sở dữ liệu trong Spring Boot</h3>
+<p>Spring Boot hỗ trợ nhiều loại cơ sở dữ liệu như MySQL, PostgreSQL, H2, và nhiều hơn nữa. Để kết nối với một cơ sở dữ liệu, bạn cần cấu hình các thông tin kết nối trong tệp <code>application.properties</code> hoặc <code>application.yml</code>.</p>
+<h4 id="ví-dụ-với-mysql">Ví dụ với MySQL:</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="na">spring.datasource.url</span><span class="o">=</span><span class="s">jdbc:mysql://localhost:3306/your_database</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.datasource.username</span><span class="o">=</span><span class="s">root</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.datasource.password</span><span class="o">=</span><span class="s">password</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.datasource.driver-class-name</span><span class="o">=</span><span class="s">com.mysql.cj.jdbc.Driver</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.jpa.database-platform</span><span class="o">=</span><span class="s">org.hibernate.dialect.MySQL5Dialect</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.jpa.hibernate.ddl-auto</span><span class="o">=</span><span class="s">update</span>
+</span></span></code></pre></div><ul>
+<li>spring.datasource.url: URL kết nối đến cơ sở dữ liệu.</li>
+<li>spring.datasource.username: Tên người dùng của cơ sở dữ liệu.</li>
+<li>spring.datasource.password: Mật khẩu của người dùng cơ sở dữ liệu.</li>
+<li>spring.jpa.hibernate.ddl-auto: Quy định cách Hibernate tạo bảng trong cơ sở dữ liệu (update, create, create-drop, validate).</li>
+</ul>
+<h3 id="2-tạo-entity-trong-spring-boot">2. Tạo Entity trong Spring Boot</h3>
+<p>Entity là các lớp Java đại diện cho bảng trong cơ sở dữ liệu. Mỗi thuộc tính của lớp Entity tương ứng với một cột trong bảng.</p>
+<p><strong>Ví dụ với Entity</strong> Product:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">javax.persistence.Entity</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">javax.persistence.Id</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Entity</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Product</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">price</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// Getters và setters</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><ul>
+<li>@Entity: Đánh dấu lớp này là một entity.</li>
+<li>@Id: Đánh dấu thuộc tính là khóa chính (Primary Key) của bảng.</li>
+</ul>
+<h3 id="3-tạo-repository">3. Tạo Repository</h3>
+<p>Repository trong Spring Boot giúp bạn thực hiện các thao tác CRUD dễ dàng mà không cần viết mã SQL. Spring Data JPA cung cấp các giao diện (interfaces) mà bạn có thể kế thừa để thao tác với cơ sở dữ liệu.</p>
+<p><strong>Ví dụ với</strong> ProductRepository:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.data.jpa.repository.JpaRepository</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">ProductRepository</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">JpaRepository</span><span class="o">&lt;</span><span class="n">Product</span><span class="p">,</span><span class="w"> </span><span class="n">Long</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// Các phương thức CRUD được tạo tự động</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><ul>
+<li>JpaRepository: Cung cấp các phương thức CRUD cơ bản, như save(), findById(), findAll(), deleteById().</li>
+</ul>
+<h3 id="4-tạo-service-để-xử-lý-nghiệp-vụ">4. Tạo Service để xử lý nghiệp vụ</h3>
+<p>Service là nơi bạn đặt các logic nghiệp vụ của ứng dụng. Bạn có thể sử dụng các repository trong service để thực hiện các thao tác với cơ sở dữ liệu.</p>
+<p><strong>Ví dụ với</strong> ProductService:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.stereotype.Service</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@Service</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ProductService</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">ProductRepository</span><span class="w"> </span><span class="n">productRepository</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Product</span><span class="w"> </span><span class="nf">createProduct</span><span class="p">(</span><span class="n">Product</span><span class="w"> </span><span class="n">product</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">productRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">product</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Product</span><span class="w"> </span><span class="nf">getProductById</span><span class="p">(</span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">productRepository</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">id</span><span class="p">).</span><span class="na">orElse</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">deleteProduct</span><span class="p">(</span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">productRepository</span><span class="p">.</span><span class="na">deleteById</span><span class="p">(</span><span class="n">id</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Iterable</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getAllProducts</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">productRepository</span><span class="p">.</span><span class="na">findAll</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><ul>
+<li>@Service: Đánh dấu lớp này là một service.</li>
+<li>@Autowired: Tiêm phụ thuộc repository vào service.</li>
+</ul>
+<h3 id="5-tạo-controller-để-xử-lý-yêu-cầu-http">5. Tạo Controller để xử lý yêu cầu HTTP</h3>
+<p>Controller là nơi bạn xử lý các yêu cầu HTTP từ phía người dùng và trả về kết quả. Trong Spring Boot, bạn có thể sử dụng @RestController để xây dựng các API RESTful.</p>
+<p><strong>Ví dụ với</strong> ProductController:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.web.bind.annotation.*</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@RestController</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@RequestMapping</span><span class="p">(</span><span class="s">&#34;/products&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ProductController</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Autowired</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">ProductService</span><span class="w"> </span><span class="n">productService</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@PostMapping</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Product</span><span class="w"> </span><span class="nf">createProduct</span><span class="p">(</span><span class="nd">@RequestBody</span><span class="w"> </span><span class="n">Product</span><span class="w"> </span><span class="n">product</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">productService</span><span class="p">.</span><span class="na">createProduct</span><span class="p">(</span><span class="n">product</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&#34;/{id}&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Product</span><span class="w"> </span><span class="nf">getProduct</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">productService</span><span class="p">.</span><span class="na">getProductById</span><span class="p">(</span><span class="n">id</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@GetMapping</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Iterable</span><span class="o">&lt;</span><span class="n">Product</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getAllProducts</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">productService</span><span class="p">.</span><span class="na">getAllProducts</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@DeleteMapping</span><span class="p">(</span><span class="s">&#34;/{id}&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">deleteProduct</span><span class="p">(</span><span class="nd">@PathVariable</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">productService</span><span class="p">.</span><span class="na">deleteProduct</span><span class="p">(</span><span class="n">id</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><ul>
+<li>@RestController: Đánh dấu lớp này là controller RESTful.</li>
+<li>@RequestMapping: Định nghĩa URL của controller.</li>
+<li>@PostMapping, @GetMapping, @DeleteMapping: Đánh dấu các phương thức xử lý các yêu cầu HTTP tương ứng.</li>
+</ul>
+<h3 id="6-tóm-tắt-các-thao-tác-crud-cơ-bản-trong-spring-boot">6. Tóm tắt các thao tác CRUD cơ bản trong Spring Boot</h3>
+<ul>
+<li>Tạo mới: Sử dụng POST để thêm sản phẩm mới.</li>
+<li>Đọc: Sử dụng GET để lấy sản phẩm theo ID hoặc tất cả sản phẩm.</li>
+<li>Cập nhật: Sử dụng PUT hoặc PATCH để cập nhật thông tin sản phẩm.</li>
+<li>Xóa: Sử dụng DELETE để xóa sản phẩm.</li>
+</ul>
+<h3 id="kết-luận">Kết luận</h3>
+<p>Spring Boot cung cấp các công cụ mạnh mẽ và dễ sử dụng để làm việc với cơ sở dữ liệu. Bằng cách kết hợp các tính năng như Spring Data JPA, Repository, Service và Controller, bạn có thể xây dựng các ứng dụng quản lý cơ sở dữ liệu một cách nhanh chóng và hiệu quả.</p>
+</div>
+    <div class="post__footer">
+      
+
+      
+        <span><a class="tag" href="/tags/spring-boot/">Spring Boot</a><a class="tag" href="/tags/database/">Database</a></span>
+
+
+      
+    </div>
+
+    
+  </div>
+
+      </main>
+    </div><footer class="footer footer__base">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        Trương Minh Đức
+        2024
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.1248fa75275e5ef0cbef27e8c1e27dc507c445ae3a2c7d2ed0be0809555dac64.js"
+    integrity="sha256-Ekj6dSdeXvDL7yfoweJ9xQfERa46LH0u0L4ICVVdrGQ="
+    crossorigin="anonymous"
+  ></script></body>
+</html>

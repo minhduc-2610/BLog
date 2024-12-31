@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java on My blog</title>
+    <link>http://localhost:1313/tags/java/</link>
+    <description>Recent content in Java on My blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 30 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Các kỹ thuật xử lý ngoại lệ trong Java</title>
+      <link>http://localhost:1313/post/ngoai-le/</link>
+      <pubDate>Mon, 30 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/ngoai-le/</guid>
+      
+        <description><h3 id="giới-thiệu-về-xử-lý-ngoại-lệ-trong-java">Giới thiệu về xử lý ngoại lệ trong Java</h3>
+<p>Xử lý ngoại lệ (Exception Handling) là một phần quan trọng trong việc lập trình Java. Nó giúp chương trình có thể tiếp tục hoạt động mà không bị dừng đột ngột khi gặp lỗi. Java cung cấp các cơ chế mạnh mẽ để xử lý ngoại lệ thông qua các cấu trúc <code>try</code>, <code>catch</code>, <code>finally</code>, và <code>throw</code>.</p></description>
+      
+    </item>
+    
+    <item>
+      <title>Lập trình đa luồng (Multithreading) trong Java</title>
+      <link>http://localhost:1313/post/lap-trinh-da-luong/</link>
+      <pubDate>Mon, 30 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/lap-trinh-da-luong/</guid>
+      
+        <description><h3 id="giới-thiệu-về-multithreading">Giới thiệu về Multithreading</h3>
+<p>Đa luồng (Multithreading) cho phép một chương trình thực thi nhiều luồng (thread) đồng thời, giúp tối ưu hóa hiệu suất.</p></description>
+      
+    </item>
+    
+    <item>
+      <title>Quản lý bộ nhớ trong Java</title>
+      <link>http://localhost:1313/post/quan-ly-bo-nho/</link>
+      <pubDate>Mon, 30 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/quan-ly-bo-nho/</guid>
+      
+        <description><h3 id="giới-thiệu-về-quản-lý-bộ-nhớ-trong-java">Giới thiệu về Quản lý bộ nhớ trong Java</h3>
+<p>Quản lý bộ nhớ trong Java là một phần quan trọng trong quá trình phát triển ứng dụng. Java sử dụng hệ thống Garbage Collection (GC) để tự động quản lý bộ nhớ và giải phóng bộ nhớ không còn sử dụng.</p></description>
+      
+    </item>
+    
+    <item>
+      <title>Tối ưu hóa hiệu suất trong Java</title>
+      <link>http://localhost:1313/post/toi-uu-hieu-suat/</link>
+      <pubDate>Mon, 30 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/toi-uu-hieu-suat/</guid>
+      
+        <description><h3 id="giới-thiệu-về-tối-ưu-hóa-hiệu-suất-trong-java">Giới thiệu về tối ưu hóa hiệu suất trong Java</h3>
+<p>Tối ưu hóa hiệu suất trong Java là một quá trình quan trọng để giảm thời gian thực thi và sử dụng tài nguyên hệ thống hiệu quả. Trong bài viết này, chúng ta sẽ tìm hiểu về các chiến lược và kỹ thuật tối ưu hóa hiệu suất trong Java.</p></description>
+      
+    </item>
+    
+    <item>
+      <title>Xây dựng API RESTful với Spring Boot</title>
+      <link>http://localhost:1313/post/api/</link>
+      <pubDate>Mon, 30 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/api/</guid>
+      
+        <description><h3 id="giới-thiệu-về-api-restful">Giới thiệu về API RESTful</h3>
+<p>API RESTful là một phong cách kiến trúc cho phép các hệ thống giao tiếp với nhau thông qua HTTP, sử dụng các phương thức như GET, POST, PUT và DELETE. RESTful API được thiết kế đơn giản và dễ dàng sử dụng, giúp kết nối giữa các hệ thống và ứng dụng web, di động.</p></description>
+      
+    </item>
+    
+  </channel>
+</rss>

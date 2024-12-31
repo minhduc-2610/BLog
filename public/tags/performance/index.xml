@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Performance on My blog</title>
+    <link>http://localhost:1313/tags/performance/</link>
+    <description>Recent content in Performance on My blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 30 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/performance/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tối ưu hóa ứng dụng Spring Boot với Caching</title>
+      <link>http://localhost:1313/post/caching/</link>
+      <pubDate>Mon, 30 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/caching/</guid>
+      
+        <description><h3 id="giới-thiệu-về-caching">Giới thiệu về Caching</h3>
+<p>Caching là một kỹ thuật tối ưu hóa hiệu suất giúp giảm thiểu thời gian xử lý bằng cách lưu trữ kết quả của các thao tác tính toán hoặc truy vấn vào bộ nhớ tạm thời, giúp tiết kiệm tài nguyên và thời gian cho các lần truy vấn tiếp theo. Spring Boot cung cấp một giải pháp caching tích hợp sẵn giúp dễ dàng cải thiện hiệu suất ứng dụng.</p></description>
+      
+    </item>
+    
+  </channel>
+</rss>

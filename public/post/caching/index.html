@@ -1,0 +1,641 @@
+<!doctype html>
+<html
+  dir="ltr"
+  lang="en"
+  data-theme=""
+  
+    class="html theme--light"
+  
+><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <title>
+    
+      
+        Tối ưu hóa ứng dụng Spring Boot với Caching |
+      Trương Minh Đức
+
+  </title>
+
+  <meta name="generator" content="Hugo 0.140.1"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="author" content="Trương Minh Đức" />
+  <meta
+    name="description"
+    content="Call me Duc BA"
+  />
+  
+  
+    
+    
+    <link
+      rel="stylesheet"
+      href="/scss/main.min.8d4fad7e6916ad2e291e8d97ada157c70350d6d7150fea137e7243340967befb.css"
+      integrity="sha256-jU&#43;tfmkWrS4pHo2XraFXxwNQ1tcVD&#43;oTfnJDNAlnvvs="
+      crossorigin="anonymous"
+      type="text/css"
+    />
+  
+
+  
+  <link
+    rel="stylesheet"
+    href="/css/markupHighlight.min.73ccfdf28df555e11009c13c20ced067af3cb021504cba43644c705930428b00.css"
+    integrity="sha256-c8z98o31VeEQCcE8IM7QZ688sCFQTLpDZExwWTBCiwA="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/fontawesome.min.10cb17328b3207590ce3d89fb482e7cd6937d8138cef2059c69cabd65ab7d6c6.css"
+    integrity="sha256-EMsXMosyB1kM49iftILnzWk32BOM7yBZxpyr1lq31sY="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/solid.min.7aa4d559d5fadcfed666b5679be54d0dbbcf6a0542742319765b253d2797cc44.css"
+    integrity="sha256-eqTVWdX63P7WZrVnm&#43;VNDbvPagVCdCMZdlslPSeXzEQ="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/regular.min.a699c3ab02229020e2d51dfe6c9a4cc556fd7781edbc166e2af9d0db9d5c66ce.css"
+    integrity="sha256-ppnDqwIikCDi1R3&#43;bJpMxVb9d4HtvBZuKvnQ251cZs4="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/brands.min.1d88b60c86c4bb253fa4d4c085d27f7ee1f6eca544f7b50b227a2e63fbcfbaaa.css"
+    integrity="sha256-HYi2DIbEuyU/pNTAhdJ/fuH27KVE97ULInouY/vPuqo="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+
+  <link rel="canonical" href="http://localhost:1313/post/caching/" />
+
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/anatole-header.min.f9132794301a01ff16550ed66763482bd848f62243d278f5e550229a158bfd32.js"
+    integrity="sha256-&#43;RMnlDAaAf8WVQ7WZ2NIK9hI9iJD0nj15VAimhWL/TI="
+    crossorigin="anonymous"
+  ></script>
+
+  
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/anatole-theme-switcher.min.d6d329d93844b162e8bed1e915619625ca91687952177552b9b3e211014a2957.js"
+      integrity="sha256-1tMp2ThEsWLovtHpFWGWJcqRaHlSF3VSubPiEQFKKVc="
+      crossorigin="anonymous"
+    ></script>
+  
+
+  
+
+  
+
+
+  
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/images/site-feature-image.png">
+  <meta name="twitter:title" content="Tối ưu hóa ứng dụng Spring Boot với Caching">
+  <meta name="twitter:description" content="Giới thiệu về Caching Caching là một kỹ thuật tối ưu hóa hiệu suất giúp giảm thiểu thời gian xử lý bằng cách lưu trữ kết quả của các thao tác tính toán hoặc truy vấn vào bộ nhớ tạm thời, giúp tiết kiệm tài nguyên và thời gian cho các lần truy vấn tiếp theo. Spring Boot cung cấp một giải pháp caching tích hợp sẵn giúp dễ dàng cải thiện hiệu suất ứng dụng.">
+
+
+
+  
+  <meta property="og:url" content="http://localhost:1313/post/caching/">
+  <meta property="og:site_name" content="My blog">
+  <meta property="og:title" content="Tối ưu hóa ứng dụng Spring Boot với Caching">
+  <meta property="og:description" content="Giới thiệu về Caching Caching là một kỹ thuật tối ưu hóa hiệu suất giúp giảm thiểu thời gian xử lý bằng cách lưu trữ kết quả của các thao tác tính toán hoặc truy vấn vào bộ nhớ tạm thời, giúp tiết kiệm tài nguyên và thời gian cho các lần truy vấn tiếp theo. Spring Boot cung cấp một giải pháp caching tích hợp sẵn giúp dễ dàng cải thiện hiệu suất ứng dụng.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2024-12-30T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-12-30T00:00:00+00:00">
+    <meta property="article:tag" content="Spring Boot">
+    <meta property="article:tag" content="Caching">
+    <meta property="article:tag" content="Performance">
+    <meta property="og:image" content="http://localhost:1313/images/site-feature-image.png">
+
+
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "articleSection": "post",
+        "name": "Tối ưu hóa ứng dụng Spring Boot với Caching",
+        "headline": "Tối ưu hóa ứng dụng Spring Boot với Caching",
+        "alternativeHeadline": "",
+        "description": "
+      
+        \u003ch3 id=\u0022giới-thiệu-về-caching\u0022\u003eGiới thiệu về Caching\u003c\/h3\u003e\n\u003cp\u003eCaching là một kỹ thuật tối ưu hóa hiệu suất giúp giảm thiểu thời gian xử lý bằng cách lưu trữ kết quả của các thao tác tính toán hoặc truy vấn vào bộ nhớ tạm thời, giúp tiết kiệm tài nguyên và thời gian cho các lần truy vấn tiếp theo. Spring Boot cung cấp một giải pháp caching tích hợp sẵn giúp dễ dàng cải thiện hiệu suất ứng dụng.\u003c\/p\u003e
+
+
+      
+
+
+    ",
+        "inLanguage": "en",
+        "isFamilyFriendly": "true",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/post\/caching\/"
+        },
+        "author" : {
+            "@type": "Person",
+            "name": "Trương Minh Đức"
+        },
+        "creator" : {
+            "@type": "Person",
+            "name": "Trương Minh Đức"
+        },
+        "accountablePerson" : {
+            "@type": "Person",
+            "name": "Trương Minh Đức"
+        },
+        "copyrightHolder" : {
+            "@type": "Person",
+            "name": "Trương Minh Đức"
+        },
+        "copyrightYear" : "2024",
+        "dateCreated": "2024-12-30T00:00:00.00Z",
+        "datePublished": "2024-12-30T00:00:00.00Z",
+        "dateModified": "2024-12-30T00:00:00.00Z",
+        "publisher":{
+            "@type":"Organization",
+            "name": "Trương Minh Đức",
+            "url": "http://localhost:1313/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "http:\/\/localhost:1313\/favicon\/favicon-32x32.png",
+                "width":"32",
+                "height":"32"
+            }
+        },
+        "image": 
+      [
+        
+        "http://localhost:1313/images/site-feature-image.png"
+
+
+      
+      ]
+
+    ,
+        "url" : "http:\/\/localhost:1313\/post\/caching\/",
+        "wordCount" : "789",
+        "genre" : [ ],
+        "keywords" : [ 
+      
+      "Spring Boot"
+
+    
+      
+        ,
+
+      
+      "Caching"
+
+    
+      
+        ,
+
+      
+      "Performance"
+
+    ]
+    }
+  </script>
+
+
+</head>
+<body class="body">
+    <div class="wrapper">
+      <aside
+        
+          class="wrapper__sidebar"
+        
+      ><div
+  class="sidebar
+    animated fadeInDown
+  "
+>
+  <div class="sidebar__content">
+    <div class="sidebar__introduction">
+      <img
+        class="sidebar__introduction-profileimage"
+        src="/images/profiles.jpg"
+        alt="profile picture"
+      />
+      
+        <div class="sidebar__introduction-title">
+          <a href="/">TRƯƠNG MINH ĐỨC</a>
+        </div>
+      
+      <div class="sidebar__introduction-description">
+        <p>Call me Duc BA</p>
+      </div>
+    </div>
+    <ul class="sidebar__list">
+      
+        <li class="sidebar__list-item">
+          <a
+            href="https://www.facebook.com/profile.php?id=100012768063762"
+            target="_blank"
+            rel="noopener me"
+            aria-label="Facebook"
+            title="Facebook"
+          >
+            <i class="fa-brands fa-facebook fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a
+            href="https://github.com/minhduc-2610"
+            target="_blank"
+            rel="noopener me"
+            aria-label="GitHub"
+            title="GitHub"
+          >
+            <i class="fa-brands fa-github fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a
+            href="https://www.instagram.com/mduck_2028/"
+            target="_blank"
+            rel="noopener me"
+            aria-label="instagram"
+            title="instagram"
+          >
+            <i class="fa-brands fa-instagram fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+        <li class="sidebar__list-item">
+          <a
+            href="mailto:truongminhduc203@gmail.com"
+            target="_blank"
+            rel="noopener me"
+            aria-label="e-mail"
+            title="e-mail"
+          >
+            <i class="fa-solid fa-envelope fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div><footer class="footer footer__sidebar">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        Trương Minh Đức
+        2024
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.1248fa75275e5ef0cbef27e8c1e27dc507c445ae3a2c7d2ed0be0809555dac64.js"
+    integrity="sha256-Ekj6dSdeXvDL7yfoweJ9xQfERa46LH0u0L4ICVVdrGQ="
+    crossorigin="anonymous"
+  ></script></div>
+</aside>
+      <main
+        
+          class="wrapper__main"
+        
+      >
+        <header class="header"><div
+  class="
+    animated fadeInDown
+  "
+>
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+  </a>
+  <nav class="nav">
+    <ul class="nav__list" id="navMenu">
+      
+      
+        
+        
+          <li class="nav__list-item">
+            
+            <a
+              
+              href="/"
+              
+              title=""
+              >Trang Chủ</a
+            >
+          </li>
+        
+
+      
+        
+        
+          <li class="nav__list-item">
+            
+            <a
+              
+              href="/post/"
+              
+              title=""
+              >Bài Viết</a
+            >
+          </li>
+        
+
+      
+        
+        
+          <li class="nav__list-item">
+            
+            <a
+              
+              href="/portfolio/"
+              
+              title=""
+              >Dự Án</a
+            >
+          </li>
+        
+
+      
+        
+        
+          <li class="nav__list-item">
+            
+            <a
+              
+              href="/about/"
+              
+              title=""
+              >Giới Thiệu</a
+            >
+          </li>
+        
+
+      
+        
+        
+
+          <li class="nav__list-item">
+            <div class="optionswitch">
+              <input class="optionswitch__picker" type="checkbox" id="4" hidden />
+
+              
+              
+                
+
+              
+                
+
+              
+
+
+              <label class="optionswitch__label" for="4"
+                >Thành Tựu <i class="fa fa-angle-down" aria-hidden="true"></i
+              ></label>
+
+              <div class="optionswitch__triangle"></div>
+              <ul class="optionswitch__list">
+                
+                  <li class="optionswitch__list-item">
+                    
+                    <a
+                      href="/awards/"
+                      
+                      title=""
+                      >Giải Thưởng</a
+                    >
+                  </li>
+                
+                  <li class="optionswitch__list-item">
+                    
+                    <a
+                      href="/certifications/"
+                      
+                      title=""
+                      >Chứng Chỉ</a
+                    >
+                  </li>
+                
+              </ul>
+            </div>
+          </li>
+        
+
+      
+        
+        
+          <li class="nav__list-item">
+            
+            <a
+              
+              href="/contact/"
+              
+              title=""
+              >Liên Hệ</a
+            >
+          </li>
+        
+
+      
+    </ul>
+    <ul class="nav__list nav__list--end">
+      
+      
+        <li class="nav__list-item">
+          <div class="themeswitch">
+            <a title="Switch Theme">
+              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+          </div>
+        </li>
+      
+    </ul>
+  </nav>
+</div>
+</header>
+  <div
+    class="post 
+      animated fadeInDown
+    "
+  >
+    
+    <div class="post__content">
+      
+        <h1>Tối Ưu Hóa Ứng Dụng Spring Boot Với Caching</h1>
+      
+      
+        <ul class="post__meta">
+          <li class="post__meta-item">
+            <em class="fas fa-calendar-day post__meta-icon"></em>
+            <span class="post__meta-text"
+              >
+                
+                  30/12/2024
+                
+
+              
+            </span>
+          </li>
+          <li class="post__meta-item">
+            <em class="fas fa-stopwatch post__meta-icon"></em>
+            <span class="post__meta-text">4-minute read</span>
+          </li>
+        </ul>
+      <h3 id="giới-thiệu-về-caching">Giới thiệu về Caching</h3>
+<p>Caching là một kỹ thuật tối ưu hóa hiệu suất giúp giảm thiểu thời gian xử lý bằng cách lưu trữ kết quả của các thao tác tính toán hoặc truy vấn vào bộ nhớ tạm thời, giúp tiết kiệm tài nguyên và thời gian cho các lần truy vấn tiếp theo. Spring Boot cung cấp một giải pháp caching tích hợp sẵn giúp dễ dàng cải thiện hiệu suất ứng dụng.</p>
+<p>Trong bài viết này, chúng ta sẽ tìm hiểu cách cấu hình và sử dụng caching trong Spring Boot để tối ưu hóa hiệu suất ứng dụng của bạn.</p>
+<h3 id="1-cấu-hình-caching-trong-spring-boot">1. Cấu hình Caching trong Spring Boot</h3>
+<p>Để sử dụng caching trong Spring Boot, bạn cần thêm một số phụ thuộc vào file <code>pom.xml</code> (nếu sử dụng Maven) hoặc <code>build.gradle</code> (nếu sử dụng Gradle).</p>
+<p><strong>Thêm phụ thuộc trong <code>pom.xml</code></strong>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-cache<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
+</span></span></code></pre></div><p><strong>Hoặc trong</strong> build.gradle:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-groovy" data-lang="groovy"><span class="line"><span class="cl"><span class="n">implementation</span> <span class="s1">&#39;org.springframework.boot:spring-boot-starter-cache&#39;</span>
+</span></span></code></pre></div><p>Sau khi thêm phụ thuộc, bạn cần bật tính năng caching bằng cách sử dụng annotation @EnableCaching trong class cấu hình chính của ứng dụng.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Configuration</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nd">@EnableCaching</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">CacheConfig</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><h3 id="2-sử-dụng-cache-với-annotation-cacheable">2. Sử dụng Cache với Annotation @Cacheable</h3>
+<p>Spring cung cấp một cách rất đơn giản để sử dụng caching với annotation @Cacheable. Khi áp dụng annotation này vào một phương thức, Spring sẽ lưu kết quả của phương thức vào bộ nhớ cache và trả lại kết quả từ cache nếu phương thức được gọi lại với cùng một tham số.</p>
+<p>Dưới đây là một ví dụ về việc sử dụng @Cacheable:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@Service</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ProductService</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Cacheable</span><span class="p">(</span><span class="s">&#34;products&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Product</span><span class="w"> </span><span class="nf">getProductById</span><span class="p">(</span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c1">// Giả sử đây là một truy vấn tốn thời gian</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">simulateLongQuery</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">productRepository</span><span class="p">.</span><span class="na">findById</span><span class="p">(</span><span class="n">id</span><span class="p">).</span><span class="na">orElseThrow</span><span class="p">(()</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RuntimeException</span><span class="p">(</span><span class="s">&#34;Product not found&#34;</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">simulateLongQuery</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">Thread</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="n">2000</span><span class="p">);</span><span class="w"> </span><span class="c1">// Giả lập truy vấn mất 2 giây</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InterruptedException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">e</span><span class="p">.</span><span class="na">printStackTrace</span><span class="p">();</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>Trong ví dụ trên, khi phương thức getProductById được gọi với cùng một tham số id, Spring sẽ trả lại kết quả từ bộ nhớ cache thay vì thực hiện lại truy vấn cơ sở dữ liệu.</p>
+<h3 id="3-cấu-hình-cache">3. Cấu hình Cache</h3>
+<p>Mặc định, Spring Boot sử dụng bộ nhớ cache trong bộ nhớ (In-memory cache). Tuy nhiên, bạn có thể cấu hình cache để sử dụng các giải pháp như Redis hoặc EhCache.</p>
+<p><strong>Sử dụng Redis làm Cache Store</strong>
+Để cấu hình Redis, bạn cần thêm phụ thuộc Redis vào file pom.xml:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-data-redis<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
+</span></span></code></pre></div><p>Sau đó, cấu hình kết nối Redis trong application.properties:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="na">spring.cache.type</span><span class="o">=</span><span class="s">redis</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.redis.host</span><span class="o">=</span><span class="s">localhost</span>
+</span></span><span class="line"><span class="cl"><span class="na">spring.redis.port</span><span class="o">=</span><span class="s">6379</span>
+</span></span></code></pre></div><p><strong>Sử dụng EhCache</strong>
+EhCache là một bộ nhớ cache phổ biến khác. Để sử dụng EhCache, bạn cần thêm phụ thuộc sau vào pom.xml:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-cache<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;dependency&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;groupId&gt;</span>org.ehcache<span class="nt">&lt;/groupId&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;artifactId&gt;</span>ehcache<span class="nt">&lt;/artifactId&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/dependency&gt;</span>
+</span></span></code></pre></div><p>Sau đó, cấu hình EhCache trong application.properties:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="na">spring.cache.type</span><span class="o">=</span><span class="s">ehcache</span>
+</span></span></code></pre></div><h3 id="4-cập-nhật-cache-với-cacheput">4. Cập nhật Cache với @CachePut</h3>
+<p>Nếu bạn muốn cập nhật cache sau khi thực hiện một thao tác thay đổi dữ liệu, bạn có thể sử dụng annotation @CachePut. Annotation này đảm bảo rằng kết quả mới của phương thức được lưu vào cache.</p>
+<p>Ví dụ:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@CachePut</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;products&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;#product.id&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="n">Product</span><span class="w"> </span><span class="nf">updateProduct</span><span class="p">(</span><span class="n">Product</span><span class="w"> </span><span class="n">product</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">productRepository</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">product</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>Trong ví dụ trên, sau khi cập nhật thông tin sản phẩm, cache sẽ được làm mới với kết quả mới của phương thức updateProduct.</p>
+<h3 id="5-xóa-cache-với-cacheevict">5. Xóa Cache với @CacheEvict</h3>
+<p>Nếu bạn muốn xóa một phần tử trong cache, bạn có thể sử dụng annotation @CacheEvict. Điều này rất hữu ích khi dữ liệu trong cache bị thay đổi hoặc bị xóa khỏi cơ sở dữ liệu.</p>
+<p>Ví dụ:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@CacheEvict</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;products&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;#id&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">deleteProduct</span><span class="p">(</span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">productRepository</span><span class="p">.</span><span class="na">deleteById</span><span class="p">(</span><span class="n">id</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div><p>Trong ví dụ này, sau khi sản phẩm bị xóa, Spring sẽ tự động xóa kết quả tương ứng trong cache.</p>
+<h3 id="6-cách-kiểm-tra-và-tối-ưu-hóa-cache">6. Cách kiểm tra và tối ưu hóa Cache</h3>
+<p>Để tối ưu hóa việc sử dụng cache, bạn cần đảm bảo rằng các kết quả cache được tái sử dụng hiệu quả. Việc lựa chọn đúng đối tượng để cache và thiết lập thời gian sống (TTL) của cache sẽ giúp cải thiện hiệu suất.</p>
+<p>Dưới đây là một ví dụ cấu hình TTL cho Redis cache trong application.properties:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-properties" data-lang="properties"><span class="line"><span class="cl"><span class="na">spring.cache.redis.time-to-live</span><span class="o">=</span><span class="s">60000</span>
+</span></span></code></pre></div><p>Điều này sẽ đảm bảo rằng dữ liệu trong cache sẽ hết hạn sau 60 giây.</p>
+<h3 id="7-kết-luận">7. Kết luận</h3>
+<p>Caching là một phương pháp rất hiệu quả để tối ưu hóa hiệu suất của ứng dụng, đặc biệt là với Spring Boot. Với các annotation như @Cacheable, @CachePut và @CacheEvict, việc tích hợp caching vào ứng dụng Spring Boot trở nên rất đơn giản. Bằng cách sử dụng các công nghệ caching như Redis và EhCache, bạn có thể cải thiện đáng kể thời gian phản hồi và giảm tải cho cơ sở dữ liệu.</p>
+</div>
+    <div class="post__footer">
+      
+
+      
+        <span><a class="tag" href="/tags/spring-boot/">Spring Boot</a><a class="tag" href="/tags/caching/">Caching</a><a class="tag" href="/tags/performance/">Performance</a></span>
+
+
+      
+    </div>
+
+    
+  </div>
+
+      </main>
+    </div><footer class="footer footer__base">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        Trương Minh Đức
+        2024
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.1248fa75275e5ef0cbef27e8c1e27dc507c445ae3a2c7d2ed0be0809555dac64.js"
+    integrity="sha256-Ekj6dSdeXvDL7yfoweJ9xQfERa46LH0u0L4ICVVdrGQ="
+    crossorigin="anonymous"
+  ></script></body>
+</html>

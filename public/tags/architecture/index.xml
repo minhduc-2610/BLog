@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Architecture on My blog</title>
+    <link>http://localhost:1313/tags/architecture/</link>
+    <description>Recent content in Architecture on My blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 30 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/architecture/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Xây dựng và triển khai ứng dụng Microservices với Spring Boot</title>
+      <link>http://localhost:1313/post/microservices/</link>
+      <pubDate>Mon, 30 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/microservices/</guid>
+      
+        <description><h3 id="giới-thiệu-về-microservices">Giới thiệu về Microservices</h3>
+<p>Microservices là một kiến trúc phần mềm trong đó ứng dụng được chia thành các dịch vụ nhỏ, độc lập, mỗi dịch vụ thực hiện một chức năng cụ thể. Các dịch vụ này giao tiếp với nhau qua API và có thể được triển khai, phát triển, và bảo trì một cách độc lập.</p></description>
+      
+    </item>
+    
+  </channel>
+</rss>

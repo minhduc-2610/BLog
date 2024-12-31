@@ -1,0 +1,48 @@
+  [[main]]
+  name = "Trang Chủ"
+  identifier = "home"
+  weight = 100
+  url = "/"
+
+  [[main]]
+  name = "Bài Viết"
+  weight = 200
+  identifier = "posts"
+  url = "/post/"
+
+  [[main]]
+  name = "Dự Án"
+  weight = 300
+  identifier = "portfolio"
+  url = "/portfolio/"
+
+  [[main]]
+  name = "Giới Thiệu"
+  weight = 400
+  identifier = "about"
+  url = "/about/"
+
+  [[main]]
+  name = "Thành Tựu"
+  weight = 500
+  identifier = "accomplishments"
+
+  [[main]]
+  name = "Giải Thưởng"
+  weight = 510
+  identifier = "awards"
+  url = "/awards/"
+  parent = "accomplishments"  
+
+  [[main]]
+  name = "Chứng Chỉ"
+  weight = 520
+  identifier = "certifications"
+  url = "/certifications/"
+  parent = "accomplishments"
+
+  [[main]]
+  name = "Liên Hệ"
+  weight = 600
+  identifier = "contact"
+  url = "/contact/"

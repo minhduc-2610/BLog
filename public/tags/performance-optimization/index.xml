@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Performance Optimization on My blog</title>
+    <link>http://localhost:1313/tags/performance-optimization/</link>
+    <description>Recent content in Performance Optimization on My blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 30 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/performance-optimization/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tối ưu hóa hiệu suất trong Java</title>
+      <link>http://localhost:1313/post/toi-uu-hieu-suat/</link>
+      <pubDate>Mon, 30 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/toi-uu-hieu-suat/</guid>
+      
+        <description><h3 id="giới-thiệu-về-tối-ưu-hóa-hiệu-suất-trong-java">Giới thiệu về tối ưu hóa hiệu suất trong Java</h3>
+<p>Tối ưu hóa hiệu suất trong Java là một quá trình quan trọng để giảm thời gian thực thi và sử dụng tài nguyên hệ thống hiệu quả. Trong bài viết này, chúng ta sẽ tìm hiểu về các chiến lược và kỹ thuật tối ưu hóa hiệu suất trong Java.</p></description>
+      
+    </item>
+    
+  </channel>
+</rss>

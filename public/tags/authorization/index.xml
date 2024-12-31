@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Authorization on My blog</title>
+    <link>http://localhost:1313/tags/authorization/</link>
+    <description>Recent content in Authorization on My blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 30 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/authorization/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sử dụng Spring Security trong ứng dụng Spring Boot</title>
+      <link>http://localhost:1313/post/spring-security/</link>
+      <pubDate>Mon, 30 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/spring-security/</guid>
+      
+        <description><h3 id="giới-thiệu-về-spring-security">Giới thiệu về Spring Security</h3>
+<p>Spring Security là một framework bảo mật mạnh mẽ cho các ứng dụng Java, đặc biệt là các ứng dụng Spring Boot. Nó cung cấp các tính năng bảo mật quan trọng như xác thực (authentication), phân quyền (authorization), và bảo vệ khỏi các mối đe dọa như CSRF, XSS.</p></description>
+      
+    </item>
+    
+  </channel>
+</rss>

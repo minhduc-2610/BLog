@@ -1,0 +1,39 @@
+portfolioitems:
+  # portfolio category
+  - title: Dự án cá nhân
+    description: 'Tất cả dự án lập trình của tôi'
+    portfolioitem:
+      - name: Website quỹ từ thiện
+        image: '/images/portfolio/webquytuthien.jpg'
+        # link: https://ctfd.io/
+        # linktext: 'Visit project website'
+        description: 'Website quỹ từ thiện - là nơi mà chúng ta có thể chung tay góp sức góp tiền để giúp đỡ những người nghèo khó, những người bệnh tật, những người khuyết tật, những người mồ côi, những người khó khăn, những người bị thiên tai, dịch bệnh, ...'
+        tags:
+          - Website
+          - Quỹ từ thiện
+        status: 'Đã hoàn thiện'
+        start: '2024'
+        end: '2024'
+        authors:
+          - Lê Trần Nhật Cường
+          - Trương Minh Đức
+          - Phạm Thiên Quốc
+      - name: Web đồ điện tử
+        image: '/images/portfolio/webdientu.jpg'
+        
+        description: 'TopPhone là một trang web bán đồ điện tử trực tuyến được thành lập vào năm 2024 tại Thành phố Hồ Chí Minh, Việt Nam. Trang web chuyên cung cấp các loại thiết bị điện tử đa dạng, từ điện thoại thông minh, laptop, máy tính bảng, phụ kiện công nghệ, đến thiết bị âm thanh, thiết bị nhà thông minh, và nhiều sản phẩm công nghệ khác. TopPhone cam kết mang đến cho khách hàng những sản phẩm chất lượng cao, giá cả cạnh tranh, cùng với dịch vụ hỗ trợ tận tình và chính sách bảo hành uy tín.'
+        status: 'Hoàn thành'
+        tags:
+          - Đồ điện tử
+          - Website
+     
+  # portfolio category
+  - title: Tìm hiểu
+    description: 'Tất cả dự án tìm hiểu của tôi'
+    portfolioitem:
+      - name: Website order đồ ăn tại bàn
+        # image: '/images/portfolio/dreamshop.png'
+        description: 'Dự án "App Order Đồ Ăn Tại Bàn" nhằm cung cấp giải pháp số hóa cho các nhà hàng, quán ăn trong việc quản lý đặt món. Ứng dụng cho phép khách hàng xem thực đơn, đặt món trực tiếp từ bàn và thanh toán dễ dàng qua các phương thức khác nhau. Ngoài ra, tính năng theo dõi trạng thái đơn hàng và phản hồi nhanh chóng sẽ cải thiện trải nghiệm người dùng, đồng thời giúp nhà hàng tối ưu hóa quy trình vận hành, giảm thiểu sai sót và nâng cao hiệu quả kinh doanh. Đây là bước tiến quan trọng trong việc nâng cao sự hài lòng của khách hàng và tăng cường hiệu quả kinh doanh trong lĩnh vực ẩm thực.'
+        tags:
+          - Đồ ăn
+          - App

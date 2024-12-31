@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>REST API on My blog</title>
+    <link>http://localhost:1313/tags/rest-api/</link>
+    <description>Recent content in REST API on My blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 30 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/rest-api/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Xây dựng API RESTful với Spring Boot</title>
+      <link>http://localhost:1313/post/api/</link>
+      <pubDate>Mon, 30 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/api/</guid>
+      
+        <description><h3 id="giới-thiệu-về-api-restful">Giới thiệu về API RESTful</h3>
+<p>API RESTful là một phong cách kiến trúc cho phép các hệ thống giao tiếp với nhau thông qua HTTP, sử dụng các phương thức như GET, POST, PUT và DELETE. RESTful API được thiết kế đơn giản và dễ dàng sử dụng, giúp kết nối giữa các hệ thống và ứng dụng web, di động.</p></description>
+      
+    </item>
+    
+  </channel>
+</rss>

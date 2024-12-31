@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Memory Management on My blog</title>
+    <link>http://localhost:1313/tags/memory-management/</link>
+    <description>Recent content in Memory Management on My blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 30 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/memory-management/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Quản lý bộ nhớ trong Java</title>
+      <link>http://localhost:1313/post/quan-ly-bo-nho/</link>
+      <pubDate>Mon, 30 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/post/quan-ly-bo-nho/</guid>
+      
+        <description><h3 id="giới-thiệu-về-quản-lý-bộ-nhớ-trong-java">Giới thiệu về Quản lý bộ nhớ trong Java</h3>
+<p>Quản lý bộ nhớ trong Java là một phần quan trọng trong quá trình phát triển ứng dụng. Java sử dụng hệ thống Garbage Collection (GC) để tự động quản lý bộ nhớ và giải phóng bộ nhớ không còn sử dụng.</p></description>
+      
+    </item>
+    
+  </channel>
+</rss>
